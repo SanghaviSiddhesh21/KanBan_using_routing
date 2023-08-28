@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Report</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/css/listreport.css">
+        
+    </head>
+    <body>
+        <nav class="navbar navbar-custom" id="navbar">
+            <div class="container-fluid">
+                <div id="nav-logo"><a href="/Dashboard">Lista</a></div>
+                <button class="navbar-toggler navbar-toggler-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header offcanvas-header-custom">
+                <h2 class="offcanvas-title" id="offcanvasRightLabel">Username</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body offcanvas-body-custom">
+                <div>
+                    <div class="offcanvas-body-elements"><a href="/ListAdder">Create a New List</a></div>
+                    <div class="offcanvas-body-elements"><a href="/CardAdder">Create a New Card</a></div>
+                    <div class="offcanvas-body-elements"><a href="/ListSummary">List Summary</a></div>
+                    <div class="offcanvas-body-elements"><a href="#">Export List</a></div>
+                    <div class="offcanvas-body-elements"><a href="/Logout">Logout</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" id="app">
+            <div class="row flex-row flex-nowrap dashboard-listbody">
+                {% for i in data %}
+                    <div class="card list-custom" style="width: 20rem;">
+                        <div class="card-body card-body-list">
+                        <h3 class="card-title">{{i[1]}}</h3>
+                        <h6><em>{{i[2]}}</em></h6>
+                        <p class="card-text">
+                            <div class="overflow-auto overflow-custom">
+                                <div class="card card-card" style="width: 16.5rem;">
+                                    <div class="list-text-summary">
+                                        <span>Total number of tasks in the list: {{i[3]}}</span>
+                                        <span>Total number of completed tasks: {{i[4]}}</span>
+                                        <span>Total number of pending tasks: {{i[5]}}</span>
+                                    </div>
+                                    <div class="list-graphical-summary">
+                                        <div class="late-complition-image">
+                                            <img src="/static/my_pie_{{i[0]}}.jpg">
+                                        </div>
+                                        <div class="tasks-when-completed">
+                                            <img src="/static/bar_{{i[0]}}.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    </body>
+</html>

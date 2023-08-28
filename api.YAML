@@ -1,0 +1,110 @@
+openapi: 3.0.0
+info:
+  title: Lista
+  version: 1.0.0
+  description: The purpose of this application is to help it's user to better keep track of their tasks and increase their productivity
+              <h2>Error information</h2>
+                  <table>
+                    <thead>
+                      <th>Error Code &nbsp;</th>
+                      <th>Message</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>E001</td>
+                        <td>Input not of proper format</td>
+                      </tr>
+                      <tr>
+                        <td>E002</td>
+                        <td>User does not exists</td>
+                      </tr>
+                          
+                    </tbody>
+                  </table>
+servers:
+  - url: http://127.0.0.1:8080/
+paths:      
+  /api/getallactivelists/{userid}:
+    description: >-
+      To get all the active list and all of it's cards along with other information
+    get:
+      description: Operation to check if a user exists
+      parameters:
+        - in: path
+          name: userid
+          required: true
+          schema:
+            type: string
+            example: '12'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: user object
+                type: object
+                properties:
+                  Existense:
+                    type: string
+                    example: true/false                 
+        '404':
+          description: Resource error
+        '500':
+          description: Internal Server Error
+  /api/getallcompletelists/{userid}:
+    description: >-
+      To get all the completed list and all of it's cards along with other information
+    get:
+      description: Operation to check if a user exists
+      parameters:
+        - in: path
+          name: userid
+          required: true
+          schema:
+            type: string
+            example: '12'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: user object
+                type: object
+                properties:
+                  Existense:
+                    type: string
+                    example: true/false                 
+        '404':
+          description: Resource error
+        '500':
+          description: Internal Server Error
+  /api/getallactivecardsfromlists/{userid}:
+    description: >-
+      To get all the active list and all of it's active cards along with other information
+    get:
+      description: Operation to check if a user exists
+      parameters:
+        - in: path
+          name: userid
+          required: true
+          schema:
+            type: string
+            example: '12'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: user object
+                type: object
+                properties:
+                  Existense:
+                    type: string
+                    example: true/false                 
+        '404':
+          description: Resource error
+        '500':
+          description: Internal Server Error
